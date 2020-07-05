@@ -9,7 +9,6 @@ export const dispatch = (action) => action$.next(action)
 
 const mergeReducers = (reducerEntries) => (oldState, action) => {
   let newState = produce(oldState, (state) => {
-    /* let state = {...oldState} // this does shallow copy, may should be deep? */
     let entries = Object.entries(reducerEntries)
     if (action.filter) {
       try { // too many potential errors to check. Move on if error
@@ -23,12 +22,12 @@ const mergeReducers = (reducerEntries) => (oldState, action) => {
     }
   })
   // let javascript reflow before triggering async epics
-  setTimeout(() => async$.next([newState, action]), 0)
+  setTimeout(() => async$.next(newState, action), 0)
   return newState
 }
 
 export const ofMap = (filters, types, f) =>
-  ops.map(([state, action]) => {
+  ops.map((state, action) => {
     if ((types.length === 0 || types.includes(action.type) || !action.type) &&
         (filters.length === 0 || filters.includes(action.filter) || !action.filter))
       return f([state, action]) || null
