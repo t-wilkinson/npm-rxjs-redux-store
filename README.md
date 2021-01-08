@@ -3,7 +3,7 @@ a simple rxjs-based redux and redux-observable implementation
 
 ## Usage
 
-``` javascript
+``` JSX
 /* slice.js */
 export default {
     root: {
