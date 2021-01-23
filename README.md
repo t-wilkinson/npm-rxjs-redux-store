@@ -23,7 +23,7 @@ export default {
 
 
 /* store.js */
-import {ofMap, dispatch, mergeEpics, createStore} from "@winston-wilkinson/rxjs-redux-store"
+import {ofMap, dispatch, mergeEpics, createStore} from "@t-wilkinson/rxjs-redux-store"
 
 const [Provider, useStore, subscribe, actions] = createStore(myslices)
 export {Provider, useStore, subscribe, actions, dispatch}
